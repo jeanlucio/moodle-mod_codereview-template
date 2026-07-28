@@ -1,0 +1,49 @@
+# Um job por critério avaliado.
+#
+# A Checks API do GitHub cria uma checagem por JOB, não por step. O mod_codereview conta
+# quantas checagens passaram, então reunir tudo num job só faria a atividade enxergar um
+# único resultado passou/falhou, sem granularidade.
+name: Correção automática
+
+on: [push]
+
+jobs:
+  soma:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pytest
+      - run: pytest tests/test_calculadora.py::test_somar -q
+
+  subtracao:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pytest
+      - run: pytest tests/test_calculadora.py::test_subtrair -q
+
+  multiplicacao:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pytest
+      - run: pytest tests/test_calculadora.py::test_multiplicar -q
+
+  estilo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install flake8
+      - run: flake8 exercicio tests --max-line-length=100
