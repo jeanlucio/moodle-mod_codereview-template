@@ -12,5 +12,8 @@ def subtrair(a: float, b: float) -> float:
 
 
 def multiplicar(a: float, b: float) -> float:
-    """Devolve o produto de dois números."""
+    """Devolve o produto de dois números.
+
+    TODO: implemente esta função e apague o raise abaixo.
+    """
     raise NotImplementedError("Implemente esta função.")

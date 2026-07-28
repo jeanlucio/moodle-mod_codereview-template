@@ -1,0 +1,6 @@
+# pytest runs from the repository root, but by default it puts the test file's own
+# directory on sys.path, not the root. Declaring rootdir here is what lets the tests
+# import the exercicio package.
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
